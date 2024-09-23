@@ -5,7 +5,9 @@ const cors = require('cors');
 
 
 // Create a database connection
-mongoose.connect('mongodb+srv://ys09559:<motihari22>@cluster0.zlh8o.mongodb.net/').then(()=>console.log('MongoDB connected')).catch(error=> console.log(error));
+mongoose.connect('mongodb+srv://personalyuvraj24:rXbIK5WahL0Ur3g6@cluster0.227go.mongodb.net/')
+
+.then(()=>console.log('MongoDB connected')).catch(error=> console.log(error));
 
 const app = express();
 const PORT = process.env.PORT || 5000;
