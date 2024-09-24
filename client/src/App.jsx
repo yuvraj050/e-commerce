@@ -1,36 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './index.css'
+import { Route } from "react-router-dom"
+import AuthLogin from "./pages/auth/login"
+import AuthRegister from "./pages/auth/register"
+import AdminLayout from "./components/ui/admin-view/layout"
+import AdminDashboard from "./pages/auth/admin-view/dashboard"
+import AdminProducts from "./pages/auth/admin-view/products"
+import AdminOrders from "./pages/auth/admin-view/orders"
+import AdminFeatures from "./pages/auth/admin-view/features"
+import ShoppingLayout from "./components/ui/shopping-view/layout"
+import NotFound from "./pages/auth/not-found"
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <div className="text-center">
-      <div className="flex justify-center gap-4 mt-8">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="w-16 h-16" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="w-16 h-16 react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className="text-5xl font-bold my-8">Vite + React</h1>
-      <div className="card">
-        <button
-          className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-700"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </button>
-        <p className="mt-4">
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="text-gray-500 mt-8">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="flex flex-col overflow-hidden bg-white">
+
+      <Routes>
+        <Route path="/auth" element={<AuthLayout/>}>
+          <Route path="login" element={<AuthLogin/>} />
+          <Route path="register" element={<AuthRegister />} />
+        </Route>
+          <Route path="/admin" element={<AdminLayout/>}>
+            <Route path="dashboard" element={<AdminDashboard/>}/>
+            <Route path="/products" element={<AdminProducts/>}/>
+            <Route path="orders" element={<AdminOrders/>}/>
+            <Route path="features" element={<AdminFeatures/>}/>
+          </Route>
+          <Route path="/shop" element={<ShoppingLayout/>}></Route>
+          <Route path="*" element={<NotFound/>}></Route>
+      </Routes>
+
     </div>
   )
 }
